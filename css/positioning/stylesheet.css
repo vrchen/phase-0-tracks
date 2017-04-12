@@ -1,0 +1,24 @@
+/*create a dive the widht of the octopus so that we can use positioning on hat & glasses absolute to the div so that they move relative to octopus */
+div {
+	position: relative;
+	display: block;;
+	margin: auto;
+	width: 210px;
+}
+
+#octopus{
+	position: relative;
+	margin-top: 100px;
+}
+
+#hat{
+	position: absolute;
+	left: -20px;
+	top: 30px;
+}
+
+#glasses{
+	position: absolute;
+	top: 200px;
+	left: 42px;
+}
