@@ -1,0 +1,25 @@
+/* mandatory pairing Victoria Chen <> Stephanie Tong */
+
+section#contact-info{
+	font-size: .8em;
+}
+
+section.job{
+	background-color: #e9e5dc;
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+ul.bullet-details{
+	font-size: .8em;
+}
+
+section section {
+	border: 1px solid black;
+}
+
+ul > li {
+	color: orange;
+}
