@@ -1,0 +1,23 @@
+Release 0: Pseudocode for using an elevator
+
+Enter elevator
+Turn left
+Move forward until you reach wall
+Turn left
+Move forward until you reach the next wall (assuming the panel is in the corner)
+Reach down to the floor
+Extending your index finger
+Until you reach a button AND the button is the desired number
+    Move finger from the left side of the panel to the right side of the panel
+    Move finger up one inch
+Push the button
+
+
+
+Relase 1: Pseudocode for a common task - scooping cat litter
+
+Keep track of when the last time I scooped the litter
+If it has been more than 1 days ince I last scooped the litter OR the litter looks used
+    Scoop litter
+Otherwise
+    Don't need to do anything
