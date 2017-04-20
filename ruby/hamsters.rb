@@ -29,7 +29,7 @@ if volume != ""
 end
 
 #release 3: print data to console
-p "New entry created. See data below:"
+p "New entry created. See data below:" + "/n" +
 p "Name: #{hamster_name}"
 p "Volume: #{volume}"
 p "Fur Color: #{fur_color}"
