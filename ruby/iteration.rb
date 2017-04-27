@@ -27,6 +27,8 @@ p city_states
 
 #release 2: use the documentation
 
+#arrays
+
 #delete numbers that are less than 5
 numbers = (1..10).to_a
 numbers.delete_if {|num| num < 5}
@@ -43,7 +45,29 @@ numbers.select! {|num| num < 5}
 p numbers
 
 #removes items until a condition is documentation
-#removes item until it finds the first multiple of 5
-numbers = (1..10).to_a
-numbers = numbers.drop_while{|num| num%5 != 0}
+numbers = [1,2,3,4,5,0]
+numbers = numbers.drop_while{|num| num < 5}
 p numbers
+
+
+#hashes
+
+#delete values that are less than 5
+myhash = {a:1, b:2, c:3, d:8, e:10}
+myhash.delete_if {|k,v| v < 5 }
+p myhash
+
+#keeping values that are less than 5
+myhash = {a:1, b:2, c:3, d:8, e:10}
+myhash.keep_if { |k,v| v < 5 }
+p myhash
+
+#another way to keep values that are less than 5
+myhash = {a:1, b:2, c:3, d:8, e:10}
+myhash.select! { |k,v| v < 5 }
+p myhash
+
+#removes items until a condition is documentation
+myhash = {a:1, b:2, c:3, d:8, e:10}
+myhash = myhash.drop_while { |k,v| v < 5 }
+p myhash.to_h
