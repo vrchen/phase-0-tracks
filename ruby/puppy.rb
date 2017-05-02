@@ -12,3 +12,6 @@ BEHAVIOR -----------------------
 Lick
 Tumble
 Cuddle
+Roll Over
+Play Dead
+Bark
