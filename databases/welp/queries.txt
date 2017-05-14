@@ -1,0 +1,40 @@
+Module 8.4
+
+Release 2
+
+JOIN THREE TABLES:
+
+sqlite> SELECT *
+   ...> FROM businesses
+   ...> JOIN reviews ON businesses.id = reviews.business_id
+   ...> JOIN users ON reviews.user_id = users.id;
+
+1|Grundy Hollow Wedding Chapel|1|5|Great food!|1|1|1|Bradford|Pitt
+1|Grundy Hollow Wedding Chapel|2|3|Food sucked.|1|2|2|Mandy|Kaling
+2|Amir's Towing|3|2|Got my car towed by them.|2|2|2|Mandy|Kaling
+2|Amir's Towing|4|1|I hate them.|2|3|3|Angela|Jolie
+
+JUST VIEW USER NAME, BUSINESS NAM, STAR RATING, AND COMMENT:
+
+sqlite> SELECT users.first_name, users.last_name, businesses.name, stars, comment
+   ...> FROM businesses
+   ...> JOIN reviews ON businesses.id = reviews.business_id
+   ...> JOIN users ON reviews.user_id = users.id;
+
+Bradford|Pitt|Grundy Hollow Wedding Chapel|5|Great food!
+Mandy|Kaling|Grundy Hollow Wedding Chapel|3|Food sucked.
+Mandy|Kaling|Amir's Towing|2|Got my car towed by them.
+Angela|Jolie|Amir's Towing|1|I hate them.
+s
+
+
+VIEW DATA OF ALL THREE TABLES FOR JUST ONE PARTICULAR BUSINESS:
+
+sqlite> SELECT users.first_name, users.last_name, businesses.name, stars, comment
+   ...> FROM businesses
+   ...> JOIN reviews ON businesses.id = reviews.business_id
+   ...> JOIN users ON reviews.user_id = users.id
+   ...> WHERE businesses.name = "Amir's Towing";
+
+Mandy|Kaling|Amir's Towing|2|Got my car towed by them.
+Angela|Jolie|Amir's Towing|1|I hate them.
