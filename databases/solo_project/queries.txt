@@ -1,0 +1,61 @@
+Release 2: Execute SQL Queries
+
+1. Display the information in one table (either table is fine).
+
+sqlite> SELECT * FROM cars;
+1|C350|350|true|3
+2|IS350|300|true|2
+3|X3|250|false|1
+4|335i|300|true|1
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> UPDATE cars SET is_fast="true" WHERE model_name="X3";
+sqlite> SELECT * FROM cars;
+1|C350|350|true|3
+2|IS350|300|true|2
+3|X3|250|true|1
+4|335i|300|true|1
+
+3. Display the information in both tables using one query.
+
+sqlite> SELECT * FROM cars, make WHERE cars.make_id = make.id;
+1|C350|350|true|3|3|Mercedes
+2|IS350|300|true|2|2|Lexus
+3|X3|250|true|1|1|BMW
+4|335i|300|true|1|1|BMW
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+sqlite> SELECT cars.model_name, cars.horsepowers, make.name FROM cars JOIN make ON cars.make_id = make.id;
+C350|350|Mercedes
+IS350|300|Lexus
+X3|250|BMW
+335i|300|BMW
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> DELETE FROM cars WHERE model_name = "X3";
+sqlite> SELECT * FROM cars;
+1|C350|350|true|3
+2|IS350|300|true|2
+4|335i|300|true|1
+
+
+Release 3: Trying Different Joins
+
+sqlite> SELECT make.name, cars.model_name
+   ...> FROM cars
+   ...> INNER JOIN make ON make.id = cars.make_id;
+Mercedes|C350
+Lexus|IS350
+BMW|335i
+
+
+sqlite> SELECT make.name, cars.model_name
+   ...> FROM make
+   ...> LEFT OUTER JOIN cars ON make.id = cars.make_id;
+BMW|335i
+Lexus|IS350
+Mercedes|C350
+Infiniti|
