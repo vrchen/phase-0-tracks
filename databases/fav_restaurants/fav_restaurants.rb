@@ -9,12 +9,13 @@ db = SQLite3::Database.new("restaurants.db")
 db.results_as_hash = true
 
 # create a table if a table doesn't already exist
-create_table_cmd = <<-SQL
+create_table_cmd = 
+<<-SQL
 	CREATE TABLE IF NOT EXISTS restaurants(
 	id INTEGER PRIMARY KEY,
 	name VARCHAR(255),
 	address VARCHAR(255),
-	stars INT,
+	stars INT
 	)
 SQL
 
@@ -24,20 +25,61 @@ db.execute(create_table_cmd)
 
 # inserts a new restaurant into the table
 def add_rest(db, name, address, rating)
-	db.execute("INSERT INTO restaurants (name, address, stars, num_dishes) VALUES (?, ?, ?, ?)", [name, address, rating])
+	db.execute("INSERT INTO restaurants (name, address, stars) VALUES (?, ?, ?)", [name, address, rating])
 end
 
-def edit_rest
+# edits a specified restaurant
+def edit_rest(db, table, id, new_name, new_address, new_rating)
+	db.execute(
+	<<-SQL
+		UPDATE table
+		SET name = ?, address = ?, rating = ?
+		WHERE id = ?
+	SQL
+	,[new_name, new_address, new_rating, id]
+	)
+end
+
+def delete_rest(db, id)
 
 end
 
-def print_rest
+# prints a list of restaurants with their IDs
+def print_rest_list(db)
+	rest_table = db.execute("SELECT * FROM restaurants")
+	puts "----------------"
+	puts "RESTAURANT LIST"
+	rest_table.each do |rest|
+		puts "#{rest['id']}: #{rest['name']}"
+	end
+	puts "----------------"
+end
 
+# prints the details of the restaurant with a given ID
+def print_rest_details(db, id)
+	selected_rest = db.execute("SELECT * FROM restaurants WHERE id = #{id}")[0]
+	puts "----------------"
+	puts "RESTAURANT DETAILS"
+	selected_rest.each do |col_name, value|
+		if !col_name.is_a? Integer
+			puts "#{col_name}: #{value}"
+		end
+	end
+	puts "----------------"
 end
 
 # Test Code
 
-add_rest(db, "McDonald's",Faker::Address.street_address + ", " + Faker::Address.city + ", " + Faker::Address.state_abbr + ", " + Faker::Address.zip, 4.5)
+# add_rest(db, Faker::Name.name,Faker::Address.street_address + ", " + Faker::Address.city + ", " + Faker::Address.state_abbr + ", " + Faker::Address.zip, 4.5)
+
+print_rest_details(db, 7)
+
+edit_rest(db,'restaurants', 7, "McDonald's", "NEW ADDRESS", 5.0)
+
+print_rest_details(db, 7)
+
+
+
 
 
 # User Interface
