@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Locations</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Campus Locations</h1>
+  <p>Here's a list of locations:</p>
+  <ul>
+    <% @locations.each do |location| %>
+      <li><%= location['campus'] %></li>
+    <% end %>
+  </ul>
+  <p>Use this form to add/delete a location:</p>
+  <form action="/add_location" method="POST">
+    <input type="text" name="location" placeholder="Name of location"><br>
+    <button type="submit">Add Location</button>
+    <button type="submit" formaction="/delete_location">Delete Location</button>
+  </form>
+  <p>Click <a href="/">here</a> to go back to the homepage</p>
+</body>
+</html>
