@@ -14,15 +14,11 @@ $(function(){
 
 	});
 
-	var wrapper = document.getElementById("wrapper")
-
 	$("#header").click(function(){
 
 		$("img").fadeToggle(3000);
 
 		$("#side-a").slideToggle();
-
-		$("#wrapper").css("background","none")
 
 	})
 
